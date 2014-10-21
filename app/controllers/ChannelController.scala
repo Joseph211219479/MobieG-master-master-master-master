@@ -83,6 +83,8 @@ object ChannelController extends Controller{
     Ok(json)
   }
 
+  /////////////////////////////////////////////////////////
+
   def getall() = Action
   {
     request =>

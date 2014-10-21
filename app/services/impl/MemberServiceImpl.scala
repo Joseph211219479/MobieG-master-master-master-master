@@ -39,7 +39,7 @@ class MemberServiceImpl extends MembersService
     }
   }
 
-  override def getConversationHistory(idMember: Long, idFac : Long): List[MembersRepository#TableElementType] =
+  override def getConversationHistory(idMember: Long , idFac : Long): List[MembersRepository#TableElementType] =
   {
     Database.forURL("jdbc:mysql://localhost:3306/mysql", driver = "com.mysql.jdbc.Driver", user = "root", password = "admin").withSession
     {

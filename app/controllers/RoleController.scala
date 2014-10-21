@@ -73,6 +73,7 @@ object RoleController extends Controller{
   }
 
   ////////////////////////////////////////////////
+
   def getAll = Action
   {
     request =>

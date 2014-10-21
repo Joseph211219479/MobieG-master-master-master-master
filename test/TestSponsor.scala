@@ -49,7 +49,6 @@ class TestSponsor extends FeatureSpec with GivenWhenThen
 
         //val nser = spons.insert(into)
 
-
         //Testing for extraction
         def Read(name: String, id: Long) =
           spons foreach { case (count: Sponsor) =>
@@ -57,10 +56,7 @@ class TestSponsor extends FeatureSpec with GivenWhenThen
               assert(count.message.contentEquals(name))
 
             }
-
-
           }
-
 
         def Update( desc: String, id: Long) =
         {

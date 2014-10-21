@@ -8,7 +8,7 @@ import repository.MemberEncountersRepository.MemberEncountersRepository
  */
 trait getUserHistoryInt {
 
-    def counter( id : Long ) : List[MemberEncountersRepository#TableElementType]
+    def getById( id : Long ) : List[MemberEncountersRepository#TableElementType]
 
 }
 

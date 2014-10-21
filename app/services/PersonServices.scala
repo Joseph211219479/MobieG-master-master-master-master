@@ -12,16 +12,16 @@ trait PersonServices
 {
     def getAllPeople() : List[PersonRepository#TableElementType]
 
-    def getPersonWithId(id : Long) : Person
+    def getPersonWithId(id : Long) : List[PersonRepository#TableElementType]
 
-  def getPersonByName(name : String) : Person
+  def getPersonByName(name : String) : List[PersonRepository#TableElementType]
 
-  def getByUsername(name : String) : Person
+  def getByUsername(name : String) : List[PersonRepository#TableElementType]
 
-  def getByEmail(email: String): Person
+  def getByEmail(email: String): List[PersonRepository#TableElementType]
 
   def getByTitle(title : String) : List[PersonRepository#TableElementType]
 
-  def getPersonByFacilId(Facilid : Long) : Person
+  def getPersonByFacilId(Facilid : Long) : List[PersonRepository#TableElementType]
 
 }

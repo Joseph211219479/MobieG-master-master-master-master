@@ -31,7 +31,7 @@ class PersonControllerTest extends Specification
       val roleM = MembersModel(4239,40015)
       val jsonstringM = gson.toJson(roleM).stripMargin
 
-      val person = PersonModel(11158,"Mr","Joseph","Davids","","Joseph","password","email",66583,40015,4239)
+      val person = PersonModel(235435,"Mr","Eminem","Davids","Slim","Joseph","password","email",66583,40015,4239)
       val jsonstring = gson.toJson(person).stripMargin
 
       val json: JsValue = JsObject(Seq

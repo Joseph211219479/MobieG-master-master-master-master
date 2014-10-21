@@ -4,14 +4,17 @@ package controllers
  * Created by akhona on 2014/10/10.
  */
 
+import controllers.MembersEncounterController._
 import domain.people.Facilitator
 import models.FacilitatorModel
 import models.crudmodels.MembersModel
 import people.Members
 import play.api.libs.json.Json
 import play.api.mvc._
+import services.MembersService
 import services.crudservices.Impl.MembersCRUD
 import services.crudservices.MembersCRUDInterface
+import services.impl.MemberServiceImpl
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -74,4 +77,40 @@ object MembersController extends Controller{
     val json = Json.toJson(res)
     Ok(json)
   }
+
+  /////////////////////////////////////////////////
+
+  def getAllMembers() = Action
+  {
+    request =>
+      val obj : MembersService = new MemberServiceImpl
+      val list = obj.getAllMembers()
+      Ok(Json.toJson(list))
+  }
+
+  def getMemberByID(id : Long) = Action
+  {
+    request =>
+      val obj : MembersService = new MemberServiceImpl
+      val list = obj.getMemberByID(id)
+      Ok(Json.toJson(list))
+  }
+
+  //problem with that ficilitator id to compare two Lists
+
+//  def getConversationHistory(idMember : Long  ) = Action
+//  {
+//    request =>
+//      val obj : MembersService = new MemberServiceImpl
+//      val list = obj.(idMember)
+//      Ok(Json.toJson(list))
+//  }
+
+//  def getLastServedMember(idMember : Long  ) = Action
+//  {
+//    request =>
+//      val obj : MembersService = new MemberServiceImpl
+//      val list = obj.getLastServedMember(idMember)
+//      Ok(Json.toJson(list))
+//  }
 }

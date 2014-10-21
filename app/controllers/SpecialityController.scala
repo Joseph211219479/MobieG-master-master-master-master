@@ -8,8 +8,10 @@ import domain.people.Facilitator
 import domain.stuff.Speciality
 import models.FacilitatorModel
 import models.crudmodels.SpecialityModel
+import services.SpecialityService
 import services.crudservices.Impl.SpecialityCRUD
 import services.crudservices.SpecialityCRUDInterface
+import services.impl.SpecialityServiceImpl
 
 import scala.concurrent.Future
 import play.api.libs.json.Json
@@ -77,4 +79,36 @@ object SpecialityController extends Controller{
     val json = Json.toJson(res)
     Ok(json)
   }
+
+  /////////////////////////////////////////////////////////
+  def getAll() = Action
+  {
+      val obj : SpecialityService = new SpecialityServiceImpl
+    val all = obj.getAll()
+    Ok(Json.toJson(all))
+  }
+
+  def getBySpecID(specID : Long) = Action
+  {
+    val obj : SpecialityService = new SpecialityServiceImpl
+    val all = obj.getBySpecID(specID)
+    Ok(Json.toJson(all))
+
+  }
+
+  def getByName(name : String) = Action
+  {
+    val obj : SpecialityService = new SpecialityServiceImpl
+    val all = obj.getByName(name)
+    Ok(Json.toJson(all))
+  }
+
+  def getByFacilitatorID( facID : Long) = Action
+  {
+    val obj : SpecialityService = new SpecialityServiceImpl
+    val all = obj.getByFacilitatorID(facID)
+    Ok(Json.toJson(all))
+  }
+
+
 }

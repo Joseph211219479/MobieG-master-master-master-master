@@ -11,7 +11,7 @@ trait MembersService
 {
   def getAllMembers() : List[MembersRepository#TableElementType]
   def getMemberByID(id : Long) : List[MembersRepository#TableElementType]
-  def getConversationHistory(idMember : Long , idFac : Long ) : List[MembersRepository#TableElementType]
+  def getConversationHistory(idMember : Long ,idFac : Long) : List[MembersRepository#TableElementType]
   def getLastServedMember(facilitatorID : Long) : List[MembersRepository#TableElementType]
 
 }

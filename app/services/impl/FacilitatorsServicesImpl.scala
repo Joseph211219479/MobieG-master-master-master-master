@@ -1,7 +1,9 @@
 package services.impl
 
+import people.Person
 import repository.FacilitatorRepository.FacilitatorRepository
 import repository.MembersRepository.MembersRepository
+import repository.PersonRepository.PersonRepository
 import services.FacilitatorServices
 import scala.slick.driver.MySQLDriver.simple._
 import scala.slick.lifted.TableQuery
@@ -11,8 +13,9 @@ import scala.slick.lifted.TableQuery
  */
 class FacilitatorsServicesImpl extends FacilitatorServices
 {
-  var memberRepo = TableQuery[MembersRepository]
-  var facilitatorRepo = TableQuery[FacilitatorRepository]
+  val memberRepo = TableQuery[MembersRepository]
+  val per = TableQuery[PersonRepository]
+  val facilitatorRepo = TableQuery[FacilitatorRepository]
 
 //  override def getAllMembersServed(facilitatorID : String): List[MembersRepository#TableElementType] =
 //  {
@@ -52,5 +55,15 @@ class FacilitatorsServicesImpl extends FacilitatorServices
         list
     }
   }
+  override def getByID(id : Long ): Person =
+    {
+      Database.forURL("jdbc:mysql://localhost:3306/test", driver = "com.mysql.jdbc.Driver", user = "root", password = "admin").withSession {
+      implicit session =>
+      val list = per.list
+    val person = list.filter(_.facilitatorId == id).head
+        person
+    }
+    }
+
 
 }

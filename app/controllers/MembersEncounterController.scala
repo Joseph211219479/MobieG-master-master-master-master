@@ -9,8 +9,10 @@ import models.FacilitatorModel
 import models.crudmodels.MemberEncounterModel
 import play.api.libs.json.Json
 import play.api.mvc._
+import services.MembersService
 import services.crudservices.Impl.MembersEncounterCRUD
 import services.crudservices.MembersEncounterCRUDint
+import services.impl.MemberServiceImpl
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -64,4 +66,16 @@ object MembersEncounterController extends Controller{
     val json = Json.toJson(res)
     Ok(json)
   }
+
+  /////////////////////////////////////////////////
+
+  def getById(id : Long) = Action
+  {
+    request =>
+      val obj: MembersEncounterCRUDint = new MembersEncounterCRUD
+      val res = obj.read(id)
+      val json = Json.toJson(res)
+      Ok(json)
+  }
+
 }

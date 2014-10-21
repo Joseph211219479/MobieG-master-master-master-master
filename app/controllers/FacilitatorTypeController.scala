@@ -9,8 +9,10 @@ import models.{FacilitatorModel, FacilitatorTypeModel}
 import people.FacilitatorType
 import play.api.libs.json.Json
 import play.api.mvc._
+import services.FacilitatorTypeService
 import services.crudservices.FacilitatorTypeCRUDInterface
 import services.crudservices.Impl.FacilitatorTypeCRUD
+import services.impl.FacilitatorTypeImpl
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -79,6 +81,40 @@ object FacilitatorTypeController extends Controller{
     val res = obj.read(id)
     val json = Json.toJson(res)
     Ok(json)
+  }
+
+  //////////////////////////////////////////////////
+
+  def getAll() = Action
+  {
+    request =>
+      val obj : FacilitatorTypeService = new FacilitatorTypeImpl
+      val all = obj.getall()
+      Ok(Json.toJson(all))
+  }
+
+  def getById(facilTypeID : Long) = Action
+  {
+    request =>
+      val obj : FacilitatorTypeService = new FacilitatorTypeImpl
+      val all = obj.getById(facilTypeID)
+      Ok(Json.toJson(all))
+  }
+
+  def getByFacilId(facilID : Long ) = Action
+  {
+    request =>
+      val obj : FacilitatorTypeService = new FacilitatorTypeImpl
+      val all = obj.getByFacilId(facilID)
+      Ok(Json.toJson(all))
+  }
+
+  def getByName(name : String) = Action
+  {
+    request =>
+      val obj : FacilitatorTypeService = new FacilitatorTypeImpl
+      val all = obj.getByName(name)
+      Ok(Json.toJson(all))
   }
 
 }

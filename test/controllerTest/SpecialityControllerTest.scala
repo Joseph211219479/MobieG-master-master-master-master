@@ -74,5 +74,18 @@ class SpecialityControllerTest extends Specification
         Logger.debug(" The Result is  " + result)
         contentType(result) must beSome("text/plain")
       }
+
+      "Should get all Speciality Object" in new WithApplication()
+      {
+        val Some(result) =route(FakeRequest(
+        GET, "/getAllSpeciality/")
+        )
+        status(result) must equalTo(OK)
+        Logger.debug(" The Result is " + result)
+        contentType(result) must beSome("application/json")
+
+      }
+
+
     }
 }

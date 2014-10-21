@@ -38,12 +38,21 @@ object FacilitatorsController extends Controller{
 
   }
 
+  //////////////////////////////////////////////////////
+
   def getAllFacilitators() = Action
   {
     request =>
       val facilitator : FacilitatorServices = new FacilitatorsServicesImpl
       val all = facilitator.getAllFacilitators()
       Ok(Json.toJson(all))
+  }
+
+  def getByID(Facid : Long) = Action
+  {
+    val facilitator : FacilitatorServices = new FacilitatorsServicesImpl
+    val all = facilitator.getByID(Facid)
+    Ok(Json.toJson(all))
   }
 
 }

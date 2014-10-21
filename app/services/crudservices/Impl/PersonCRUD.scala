@@ -30,13 +30,15 @@ class PersonCRUD extends PersonCRUDInterface {
 
       val three = admin.insert(adm)
 
-      val encryptPass = BCrypt.hashpw(perc.password, BCrypt.gensalt())
+      //encryption stuff
+      //val encryptPass = BCrypt.hashpw(perc.password, BCrypt.gensalt())
 
-      val person = Person(perc.id, perc.title, perc.firstname, perc.surname, perc.othername, perc.username, encryptPass, perc.email, perc.adminId, perc.facilitatorId, perc.membersId)
+      val person = Person(perc.id, perc.title, perc.firstname, perc.surname, perc.othername, perc.username, perc.password, perc.email, perc.adminId, perc.facilitatorId, perc.membersId)
 
       val four = peeps.insert(person)
 
-      BCrypt.checkpw("admin", encryptPass)
+      //decrypt
+     // BCrypt.checkpw("admin", encryptPass)
     }
     perc
   }

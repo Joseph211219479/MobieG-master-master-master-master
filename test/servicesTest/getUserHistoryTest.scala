@@ -25,7 +25,7 @@ class getUserHistoryTest extends FeatureSpec with GivenWhenThen {
 
       val test: getUserHistoryInt = new getUserHistoryImpl
 
-      encoList = test.counter(5)
+      encoList = test.getById(5)
 
       print(" Number of facilitators: " + encoList.size + " \n")
       for ( i <- encoList ) print(" MID: " + i.memberId + " FID: " + i.facilitatorId + " Start time: " + i.startTime + " End time: " + i.endTime + "\n\n")

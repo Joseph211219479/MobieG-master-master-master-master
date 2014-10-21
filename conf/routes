@@ -9,12 +9,19 @@ POST          /createAdmin/:Admin                              controllers.Admin
 PUT           /updateAdmin/:Admin                              controllers.AdminController.update(Admin: String)
 DELETE        /deleteAdmin/:id                                 controllers.AdminController.delete(id: Long)
 GET           /readAdmin/:id                                   controllers.AdminController.read(id: Long)
+GET           /getAllAdmin                                     controllers.AdminController.getAll()
+GET           /getAdminByID/:id                                controllers.AdminController.getByID(id: Long)
 
 #Channel
 POST          /createChannel/:Channel                          controllers.ChannelController.create(Channel: String)
 PUT           /updateChannel/:Channel                          controllers.ChannelController.update(Channel: String)
 DELETE        /deleteChannel/:id                               controllers.ChannelController.delete(id: Long)
 GET           /readChannel/:id                                 controllers.ChannelController.read(id: Long)
+GET           /getAllChannels                                  controllers.ChannelController.getall()
+GET           /getChannelByName/:name                          controllers.ChannelController.getByName(name : String)
+GET           /getChannelByID/:id                              controllers.ChannelController.getById(id : Long)
+GET           /getChannelByFacilitatorID/:facID                controllers.ChannelController.getByFacilitator(facID:Long)
+
 
 #Conversation
 POST          /createConversation/:Conversation                controllers.ConversationController.create(Conversation: String)
@@ -22,27 +29,39 @@ PUT           /updateConversation/:Conversation                controllers.Conve
 DELETE        /deleteConversation/:id                          controllers.ConversationController.delete(id: Long)
 GET           /readConversation/:id                            controllers.ConversationController.read(id: Long)
 
+#Facilitator
+GET           /getFacilitatorByFacilitatorID/:id               controllers.FacilitatorsController.getByID(id : Long)
+
+
 #FacilitatorType
 POST          /createFacilitatorType/:FacilitatorType          controllers.FacilitatorTypeController.create(FacilitatorType: String)
 PUT           /updateFacilitatorType/:FacilitatorType          controllers.FacilitatorTypeController.update(FacilitatorType: String)
 DELETE        /deleteFacilitatorType/:id                       controllers.FacilitatorTypeController.delete(id: Long)
 GET           /readFacilitatorType/:id                         controllers.FacilitatorTypeController.read(id: Long)
+GET           /getAllFacilitatorTypes/                         controllers.FacilitatorTypeController.getAll()
+GET           /getFacilitatorTypeByFacId/:FacTypeid            controllers.FacilitatorTypeController.getById(FacTypeid : Long)
+GET           /getFacilTypeByID/:facID                         controllers.FacilitatorTypeController.getByFacilId(facID : Long)
+GET           /getFacilitatorTypeByName/:name                  controllers.FacilitatorTypeController.getByName(name : String)
+
 
 #Members
 POST          /createMembers/:Members                          controllers.MembersController.create(Members: String)
 PUT           /updateMembers/:Members                          controllers.MembersController.update(Members: String)
 DELETE        /deleteMembers/:id                               controllers.MembersController.delete(id: Long)
 GET           /readMembers/:id                                 controllers.MembersController.read(id: Long)
+GET           /getAllMembers/                                  controllers.MembersController.getAllMembers()
+GET           /GetMemberByID/:memID                            controllers.MembersController.getMemberByID(memID: Long)
+
 
 #Person
 POST          /createPerson/:Person                            controllers.PersonController.create(Person: String)
 PUT           /updatePerson/:Person                            controllers.PersonController.update(Person: String)
 DELETE        /deletePerson/:id                                controllers.PersonController.delete(id: Long)
 GET           /readPerson/:id                                  controllers.PersonController.read(id: Long)
-GET           /getall                                          controllers.PersonController.getall()
-GET           /getByName/:name                                 controllers.PersonController.getByName(name: String)
-GET           /getByUsername/:username                         controllers.PersonController.getByUsername(username: String)
-GET           /getByEmail/:email                               controllers.PersonController.getByEmail(email: String)
+GET           /getallPersons                                   controllers.PersonController.getall()
+GET           /getPersonByName/:name                           controllers.PersonController.getByName(name: String)
+GET           /getPersonByUsername/:username                   controllers.PersonController.getByUsername(username: String)
+GET           /getPersonByEmail/:email                         controllers.PersonController.getByEmail(email: String)
 GET           /getPersonByFacilId/:facId                       controllers.PersonController.getPersonByFacilId(facId: Long)
 
 #Ratings
@@ -50,18 +69,32 @@ POST          /createRatings/:Ratings                          controllers.Ratin
 PUT           /updateRatings/:Ratings                          controllers.RatingsController.update(Ratings: String)
 DELETE        /deleteRatings/:id                               controllers.RatingsController.delete(id: Long)
 GET           /readRatings/:id                                 controllers.RatingsController.read(id: Long)
+GET           /ratingsWithRatingOf/:rate                       controllers.RatingsController.ratingsWithRatingOf(rate: Int)
+GET           /ratingsbigger/:rate                             controllers.RatingsController.ratingsbigger(rate : Int)
+GET           /ratingsLower/:rate                              controllers.RatingsController.ratingsLower(rate: Int)
+GET           /rateByFacilId/:facID                            controllers.RatingsController.rateByFacilId(facID : Long)
+GET           /rateById/:id                                    controllers.RatingsController.rateById(id : Long)
 
 #Role
 POST          /createRole/:Role                                controllers.RoleController.create(Role: String)
 PUT           /updateRole/:Role                                controllers.RoleController.update(Role: String)
 DELETE        /deleteRole/:id                                  controllers.RoleController.delete(id: Long)
 GET           /readRole/:id                                    controllers.RoleController.read(id: Long)
+GET           /getAllRole/                                     controllers.RoleController.getAll()
+GET           /getRoleById/:id                                 controllers.RoleController.getById(id : Long)
+GET           /getRoleByName/:name                             controllers.RoleController.getByName(name : String)
+
 
 #Speciality
 POST          /createSpeciality/:Speciality                    controllers.SpecialityController.create(Speciality: String)
 PUT           /updateSpeciality/:Speciality                    controllers.SpecialityController.update(Speciality: String)
 DELETE        /deleteSpeciality/:id                            controllers.SpecialityController.delete(id: Long)
 GET           /readSpeciality/:id                              controllers.SpecialityController.read(id: Long)
+GET           /getAllSpeciality/                               controllers.SpecialityController.getAll()
+GET           /getBySpecID/:specID                             controllers.SpecialityController.getBySpecID(specID : Long)
+GET           /getByName/:name                                 controllers.SpecialityController.getByName(name : String)
+GET           /getByFacilitatorID/:facID                       controllers.SpecialityController.getByFacilitatorID(facID : Long)
+
 
 #Sponsor
 POST          /createSponsor/:Sponsor                          controllers.SponsorController.create(Sponsor: String)
@@ -77,6 +110,8 @@ POST          /createMembersEncounter/:MembersEncounter        controllers.Membe
 PUT           /updateMembersEncounter/:MembersEncounter        controllers.MembersEncounterController.update(MembersEncounter: String)
 DELETE        /deleteMembersEncounter/:id                      controllers.MembersEncounterController.delete(id: Long)
 GET           /readMembersEncounter/:id                        controllers.MembersEncounterController.read(id: Long)
+GET           /getMembersEncounterByID/:id                     controllers.MembersEncounterController.getById(id : Long)
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET           /assets/*file                                    controllers.Assets.at(path="/public", file)

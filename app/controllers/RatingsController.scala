@@ -84,6 +84,8 @@ object RatingsController extends Controller{
     Ok(json)
   }
 
+  ////////////////////////////////////////////////////////
+
   def ratingsWithRatingOf(rate : Int) = Action
   {
     request =>

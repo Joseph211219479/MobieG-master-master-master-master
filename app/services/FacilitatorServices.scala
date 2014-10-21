@@ -1,6 +1,6 @@
 package services
 
-import people.Members
+import people.{Person, Members}
 import repository.FacilitatorRepository.FacilitatorRepository
 import repository.MembersRepository.MembersRepository
 
@@ -15,4 +15,6 @@ trait FacilitatorServices
   def getAllFacilitators() : List[FacilitatorRepository#TableElementType]
 
   def hasMemberBeenServedByFacilitator(memberID :Long, facilitatorID : Long) : Boolean
+
+  def getByID(id : Long ): Person
 }

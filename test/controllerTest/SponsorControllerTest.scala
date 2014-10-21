@@ -87,37 +87,37 @@ class SponsorControllerTest extends Specification
       }
 
       /////////////////////////////////////////////////////
-      "Should get All Sponsors" in new WithApplication
-      {
-        val Some(result) = route(FakeRequest(
-        GET, "/getAllSponsors")
-        )
-        status(result) must equalTo(OK)
-        Logger.debug("The Result is " + result)
-        contentType(result) must beSome("text/plain")
-      }
-
-      "Should get a Sponsors by it's name" in new WithApplication
-      {
-        val Some(result) = route(FakeRequest(
-          GET, "/getSponsorByName/:name")
-        )
-        status(result) must equalTo(OK)
-        Logger.debug("The Result is " + result)
-        contentType(result) must beSome("text/plain")
-      }
-
-      "Should get a Sponsors by it's id" in new WithApplication
-      {
-        val Some(result) = route(FakeRequest(
-          GET, "/getSponsorById/:id")
-        )
-        status(result) must equalTo(OK)
-        Logger.debug("The Result is " + result)
-        contentType(result) must beSome("text/plain")
-      }
-
-
-
+      //  DONE
+      //////////////////////////////////////////////////////
+//      "Should get All Sponsors" in new WithApplication
+//      {
+//        val Some(result) = route(FakeRequest(
+//        GET, "/getAllSponsors")
+//        )
+//        status(result) must equalTo(OK)
+//        Logger.debug("The Result is " + result)
+//        contentType(result) must beSome("text/plain")
+//      }
+//
+//      "Should get a Sponsors by it's name" in new WithApplication
+//      {
+//        val Some(result) = route(FakeRequest(
+//          GET, "/getSponsorByName/:name")
+//        )
+//        status(result) must equalTo(OK)
+//        Logger.debug("The Result is " + result)
+//        contentType(result) must beSome("text/plain")
+//      }
+//
+//      "Should get a Sponsors by it's id" in new WithApplication
+//      {
+//        val Some(result) = route(FakeRequest(
+//          GET, "/getSponsorById/:id")
+//        )
+//        status(result) must equalTo(OK)
+//        Logger.debug("The Result is " + result)
+//        contentType(result) must beSome("text/plain")
+//      }
     }
+
 }

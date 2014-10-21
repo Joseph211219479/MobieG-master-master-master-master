@@ -95,6 +95,7 @@ object PersonController extends Controller{
   }
 
 //////////////////////////////////////////////////////////////////
+
   def getall() = Action
   {
     request =>
