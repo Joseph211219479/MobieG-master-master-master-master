@@ -1,0 +1,82 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET           /                                                controllers.Application.index
+#Admin
+POST          /createAdmin/:Admin                              controllers.AdminController.create(Admin: String)
+PUT           /updateAdmin/:Admin                              controllers.AdminController.update(Admin: String)
+DELETE        /deleteAdmin/:id                                 controllers.AdminController.delete(id: Long)
+GET           /readAdmin/:id                                   controllers.AdminController.read(id: Long)
+
+#Channel
+POST          /createChannel/:Channel                          controllers.ChannelController.create(Channel: String)
+PUT           /updateChannel/:Channel                          controllers.ChannelController.update(Channel: String)
+DELETE        /deleteChannel/:id                               controllers.ChannelController.delete(id: Long)
+GET           /readChannel/:id                                 controllers.ChannelController.read(id: Long)
+
+#Conversation
+POST          /createConversation/:Conversation                controllers.ConversationController.create(Conversation: String)
+PUT           /updateConversation/:Conversation                controllers.ConversationController.update(Conversation: String)
+DELETE        /deleteConversation/:id                          controllers.ConversationController.delete(id: Long)
+GET           /readConversation/:id                            controllers.ConversationController.read(id: Long)
+
+#FacilitatorType
+POST          /createFacilitatorType/:FacilitatorType          controllers.FacilitatorTypeController.create(FacilitatorType: String)
+PUT           /updateFacilitatorType/:FacilitatorType          controllers.FacilitatorTypeController.update(FacilitatorType: String)
+DELETE        /deleteFacilitatorType/:id                       controllers.FacilitatorTypeController.delete(id: Long)
+GET           /readFacilitatorType/:id                         controllers.FacilitatorTypeController.read(id: Long)
+
+#Members
+POST          /createMembers/:Members                          controllers.MembersController.create(Members: String)
+PUT           /updateMembers/:Members                          controllers.MembersController.update(Members: String)
+DELETE        /deleteMembers/:id                               controllers.MembersController.delete(id: Long)
+GET           /readMembers/:id                                 controllers.MembersController.read(id: Long)
+
+#Person
+POST          /createPerson/:Person                            controllers.PersonController.create(Person: String)
+PUT           /updatePerson/:Person                            controllers.PersonController.update(Person: String)
+DELETE        /deletePerson/:id                                controllers.PersonController.delete(id: Long)
+GET           /readPerson/:id                                  controllers.PersonController.read(id: Long)
+GET           /getall                                          controllers.PersonController.getall()
+GET           /getByName/:name                                 controllers.PersonController.getByName(name: String)
+GET           /getByUsername/:username                         controllers.PersonController.getByUsername(username: String)
+GET           /getByEmail/:email                               controllers.PersonController.getByEmail(email: String)
+GET           /getPersonByFacilId/:facId                       controllers.PersonController.getPersonByFacilId(facId: Long)
+
+#Ratings
+POST          /createRatings/:Ratings                          controllers.RatingsController.create(Ratings: String)
+PUT           /updateRatings/:Ratings                          controllers.RatingsController.update(Ratings: String)
+DELETE        /deleteRatings/:id                               controllers.RatingsController.delete(id: Long)
+GET           /readRatings/:id                                 controllers.RatingsController.read(id: Long)
+
+#Role
+POST          /createRole/:Role                                controllers.RoleController.create(Role: String)
+PUT           /updateRole/:Role                                controllers.RoleController.update(Role: String)
+DELETE        /deleteRole/:id                                  controllers.RoleController.delete(id: Long)
+GET           /readRole/:id                                    controllers.RoleController.read(id: Long)
+
+#Speciality
+POST          /createSpeciality/:Speciality                    controllers.SpecialityController.create(Speciality: String)
+PUT           /updateSpeciality/:Speciality                    controllers.SpecialityController.update(Speciality: String)
+DELETE        /deleteSpeciality/:id                            controllers.SpecialityController.delete(id: Long)
+GET           /readSpeciality/:id                              controllers.SpecialityController.read(id: Long)
+
+#Sponsor
+POST          /createSponsor/:Sponsor                          controllers.SponsorController.create(Sponsor: String)
+PUT           /updateSponsor/:Sponsor                          controllers.SponsorController.update(Sponsor: String)
+DELETE        /deleteSponsor/:id                               controllers.SponsorController.delete(id: Long)
+GET           /readSponsor/:id                                 controllers.SponsorController.read(id: Long)
+GET           /getAllSponsors                                  controllers.SponsorController.getAllSponsors()
+GET           /getSponsorByName/:name                          controllers.SponsorController.getSponsorByName(name: String)
+GET           /getSponsorById/:id                              controllers.SponsorController.getSponsorById(id: Long)
+
+#MembersEncounter
+POST          /createMembersEncounter/:MembersEncounter        controllers.MembersEncounterController.create(MembersEncounter: String)
+PUT           /updateMembersEncounter/:MembersEncounter        controllers.MembersEncounterController.update(MembersEncounter: String)
+DELETE        /deleteMembersEncounter/:id                      controllers.MembersEncounterController.delete(id: Long)
+GET           /readMembersEncounter/:id                        controllers.MembersEncounterController.read(id: Long)
+
+# Map static resources from the /public folder to the /assets URL path
+GET           /assets/*file                                    controllers.Assets.at(path="/public", file)
