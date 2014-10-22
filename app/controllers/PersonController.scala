@@ -16,6 +16,7 @@ import services.crudservices.PersonCRUDInterface
 import services.impl.PersonServiceImpl
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
+import org.mindrot.jbcrypt.BCrypt
 
 object PersonController extends Controller{
   implicit val personWrites = Json.writes[Person]
@@ -27,6 +28,7 @@ object PersonController extends Controller{
   {
     request =>
       val input = request.body
+
 
       val income = (input \ "object").as[String]
       val incomeA = (input \ "admobject").as[String]
@@ -42,38 +44,39 @@ object PersonController extends Controller{
       val chanzoModel = Json.fromJson[FacilitatorModel](jsonF).get
       val othr = Json.fromJson[AdminModel](jsonA).get
       val thrz = Json.fromJson[MembersModel](jsonM).get
-      val admin = chanModel.getDomain
+      val admin = chanModel.getDomain()
       val chanzo = chanzoModel.getDomain()
       val one = othr.getDomain()
       val two = thrz.getDomain
 
-      val persObj = PersonModel(admin.id,admin.title,admin.firstname,admin.surname,admin.othername,admin.username,admin.password,admin.email,admin.adminId,admin.facilitatorId,admin.membersId).getDomain()
+      val encryptPass = BCrypt.hashpw(admin.password, BCrypt.gensalt())
+      val persObj = PersonModel(admin.id,admin.title,admin.firstname,admin.surname,admin.othername,admin.username,encryptPass,admin.email,one.id,admin.facilitatorId,admin.membersId).getDomain()
       val facObj = FacilitatorModel(chanzo.id).getDomain()
       val admObj = AdminModel(one.id).getDomain()
       val memObj = MembersModel(two.id,two.facilitatorId).getDomain
       val obj: PersonCRUDInterface = new PersonCRUD
-      val res = obj.create(chanzo, two, one, admin)
-      val other = admin.copy(id = admin.id)
-      val othera = chanzo.copy(id = chanzo.id)
-      val otherb = one.copy(id = one.id)
-      val otherc = two.copy(id = two.id)
+      val res = obj.create(facObj, memObj, admObj, persObj)
+      //val other = admin.copy(id = admin.id)
+      //val othera = chanzo.copy(id = chanzo.id)
+      //val otherb = one.copy(id = one.id)
+      //val otherc = two.copy(id = two.id)
       val results: Future[Person] = Future{res}
       results.map(resu => Ok(Json.toJson(resu)))
   }
 
-  def update( Person: String ) = Action.async(parse.json)
+ def update( Person: String ) = Action.async(parse.json)
   {
     request =>
       val input = request.body
       val income = (input \ "object").as[String]
       val json = Json.parse(income)
       val chanModel = Json.fromJson[PersonModel](json).get
-      val chanzoModel = Json.fromJson[FacilitatorModel](input).get
+      //val chanzoModel = Json.fromJson[FacilitatorModel](input).get
       val admin = chanModel.getDomain()
       //val chanzo = chanzoModel.getDomain()
       val persObj = PersonModel(admin.id,admin.title,admin.firstname,admin.surname,admin.othername,admin.username,admin.password,admin.email,admin.adminId,admin.facilitatorId,admin.membersId).getDomain()
       val obj: PersonCRUDInterface = new PersonCRUD
-      val res = obj.update(persObj.firstname,persObj.id)
+      val res = obj.update(admin.firstname,admin.id)
       val results: Future[String] = Future{res.toString}
       results.map(result => Ok(Json.toJson(result)))
   }
@@ -130,7 +133,7 @@ object PersonController extends Controller{
 
   def getPersonByFacilId(facilId : Long) = Action
   {
-    request =>
+    //request =>
       val personObj : PersonServices= new  PersonServiceImpl
       val list = personObj.getPersonByFacilId(facilId)
       Ok(Json.toJson(list))

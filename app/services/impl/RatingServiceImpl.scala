@@ -25,7 +25,7 @@ class RatingServiceImpl extends RatingServices
   }
 
   override def ratingsbigger(rate: Int): List[RatingRepository#TableElementType] =
-    Database.forURL("jdbc:mysql://localhost:3306/mysql", driver = "com.mysql.jdbc.Driver", user = "root", password = "root").withSession
+    Database.forURL("jdbc:mysql://localhost:3306/mysql", driver = "com.mysql.jdbc.Driver", user = "root", password = "admin").withSession
     {
       implicit session =>
 
@@ -35,7 +35,7 @@ class RatingServiceImpl extends RatingServices
     }
 
   override def ratingsLower(rate: Int): List[RatingRepository#TableElementType] =
-    Database.forURL("jdbc:mysql://localhost:3306/mysql", driver = "com.mysql.jdbc.Driver", user = "root", password = "root").withSession
+    Database.forURL("jdbc:mysql://localhost:3306/mysql", driver = "com.mysql.jdbc.Driver", user = "root", password = "admin").withSession
     {
       implicit session =>
 
@@ -46,7 +46,7 @@ class RatingServiceImpl extends RatingServices
 
   override def rateByFacilId(facilId: Long): List[RatingRepository#TableElementType] =
   {
-    Database.forURL("jdbc:mysql://localhost:3306/mysql", driver = "com.mysql.jdbc.Driver", user = "root", password = "root").withSession {
+    Database.forURL("jdbc:mysql://localhost:3306/mysql", driver = "com.mysql.jdbc.Driver", user = "root", password = "admin").withSession {
       implicit session =>
 
         val allRattings = ratingRepo.list
@@ -57,7 +57,7 @@ class RatingServiceImpl extends RatingServices
 
   override def rateById(id: Long): Ratings =
   {
-    Database.forURL("jdbc:mysql://localhost:3306/mysql", driver = "com.mysql.jdbc.Driver", user = "root", password = "root").withSession {
+    Database.forURL("jdbc:mysql://localhost:3306/mysql", driver = "com.mysql.jdbc.Driver", user = "root", password = "admin").withSession {
       implicit session =>
 
         val allRattings = ratingRepo.list

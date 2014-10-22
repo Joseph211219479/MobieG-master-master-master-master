@@ -43,10 +43,10 @@ object RoleController extends Controller{
   {
     request =>
       val input = request.body
-      val income = (input \ "object").as[String]
-      val json = Json.parse(income)
+      //val income = (input \ "object").as[String]
+      //val json = Json.parse(income)
 
-      val chanModel = Json.fromJson[RoleModel](json).get
+      val chanModel = Json.fromJson[RoleModel](input).get
       val admin = chanModel.getDomain()
       val rolObj = RoleModel(admin.roleId, admin.description, admin.roleName).getDomain()
 

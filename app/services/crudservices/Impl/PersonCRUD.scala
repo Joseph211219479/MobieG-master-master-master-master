@@ -24,18 +24,20 @@ class PersonCRUD extends PersonCRUDInterface {
   override def create(fac: Facilitator, mem: Members, adm: Admin, perc: Person): Person = {
     Database.forURL("jdbc:mysql://localhost:3306/mysql", driver = "com.mysql.jdbc.Driver", user = "root", password = "admin").withSession { implicit session =>
 
+      val three = admin.insert(adm)
+
       val one = facilitator.insert(fac)
 
       val two = memrepo.insert(mem)
 
-      val three = admin.insert(adm)
+
 
       //encryption stuff
-      //val encryptPass = BCrypt.hashpw(perc.password, BCrypt.gensalt())
 
-      val person = Person(perc.id, perc.title, perc.firstname, perc.surname, perc.othername, perc.username, perc.password, perc.email, perc.adminId, perc.facilitatorId, perc.membersId)
 
-      val four = peeps.insert(person)
+      //val person = new Person(perc.id,perc.title,perc.firstname,perc.surname,perc.othername,perc.username,perc.password,perc.email,perc.adminId,perc.facilitatorId,perc.membersId)
+
+      val four = peeps.insert(perc)
 
       //decrypt
      // BCrypt.checkpw("admin", encryptPass)

@@ -23,12 +23,12 @@ class PersonServiceImpl extends PersonServices
     }
   }
 //
-  override def getPersonWithId(id: Long) : List[PersonRepository#TableElementType]=
+  override def getPersonWithId(id: Long) : Person=
   {
     Database.forURL("jdbc:mysql://localhost:3306/mysql", driver = "com.mysql.jdbc.Driver", user = "root", password = "admin").withSession {
       implicit session =>
         val personObj = personRepo.list.filter(_.id == id )
-        val person = personObj
+        val person = personObj.head
         person
     }
   }

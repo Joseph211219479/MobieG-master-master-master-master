@@ -41,9 +41,9 @@ object AdminController extends Controller {
   {
     request =>
       val input = request.body
-      val income = (input \ "object").as[String]
-      val json = Json.parse(income)
-      val adminModel = Json.fromJson[AdminModel](json).get
+      //val income = (input \ "object").as[String]
+      //val json = Json.parse(income)
+      val adminModel = Json.fromJson[AdminModel](input).get
       val admin = adminModel.getDomain()
       val adminObj = AdminModel(admin.id).getDomain()
       val adm: AdminTestCRUDInterface = new AdminCRUD

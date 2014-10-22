@@ -12,7 +12,7 @@ trait PersonServices
 {
     def getAllPeople() : List[PersonRepository#TableElementType]
 
-    def getPersonWithId(id : Long) : List[PersonRepository#TableElementType]
+    def getPersonWithId(id : Long) : Person
 
   def getPersonByName(name : String) : List[PersonRepository#TableElementType]
 

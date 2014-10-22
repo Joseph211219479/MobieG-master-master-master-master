@@ -19,7 +19,7 @@ class FacilitatorsServicesImpl extends FacilitatorServices
 
 //  override def getAllMembersServed(facilitatorID : String): List[MembersRepository#TableElementType] =
 //  {
-//    Database.forURL("jdbc:mysql://localhost:3306/test", driver = "com.mysql.jdbc.Driver", user = "root", password = "root").withSession {
+//    Database.forURL("jdbc:mysql://localhost:3306/mysql", driver = "com.mysql.jdbc.Driver", user = "root", password = "root").withSession {
 //      implicit session =>
 //      val memberList = memberRepo.list
 //      val member = memberList.filter(_.facilitatorId == facilitatorID)
@@ -29,7 +29,7 @@ class FacilitatorsServicesImpl extends FacilitatorServices
 
   override def hasMemberBeenServedByFacilitator(memberId: Long , facilitatorID : Long):Boolean =
   {
-    Database.forURL("jdbc:mysql://localhost:3306/test", driver = "com.mysql.jdbc.Driver", user = "root", password = "admin").withSession
+    Database.forURL("jdbc:mysql://localhost:3306/mysql", driver = "com.mysql.jdbc.Driver", user = "root", password = "admin").withSession
     {
       implicit session =>
 
@@ -47,7 +47,7 @@ class FacilitatorsServicesImpl extends FacilitatorServices
 
   override def getAllFacilitators(): List[FacilitatorRepository#TableElementType] =
   {
-    Database.forURL("jdbc:mysql://localhost:3306/test", driver = "com.mysql.jdbc.Driver", user = "root", password = "admin").withSession
+    Database.forURL("jdbc:mysql://localhost:3306/mysql", driver = "com.mysql.jdbc.Driver", user = "root", password = "admin").withSession
     {
       implicit session =>
 
@@ -57,7 +57,7 @@ class FacilitatorsServicesImpl extends FacilitatorServices
   }
   override def getByID(id : Long ): Person =
     {
-      Database.forURL("jdbc:mysql://localhost:3306/test", driver = "com.mysql.jdbc.Driver", user = "root", password = "admin").withSession {
+      Database.forURL("jdbc:mysql://localhost:3306/mysql", driver = "com.mysql.jdbc.Driver", user = "root", password = "admin").withSession {
       implicit session =>
       val list = per.list
     val person = list.filter(_.facilitatorId == id).head

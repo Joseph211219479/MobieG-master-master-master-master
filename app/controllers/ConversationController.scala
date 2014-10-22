@@ -53,7 +53,7 @@ object ConversationController extends Controller{
       val income = (input \ "object").as[String]
       val json = Json.parse(income)
       val chanModel = Json.fromJson[ConversationModel](json).get
-      val chanzoModel = Json.fromJson[FacilitatorModel](input).get
+      //val chanzoModel = Json.fromJson[FacilitatorModel](input).get
       val admin = chanModel.getDomain()
       //val chanzo = chanzoModel.getDomain()
       val convObj = ConversationModel(admin.id,admin.message,admin.facilitatorId).getDomain()

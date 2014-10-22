@@ -38,7 +38,7 @@ POST          /createFacilitatorType/:FacilitatorType          controllers.Facil
 PUT           /updateFacilitatorType/:FacilitatorType          controllers.FacilitatorTypeController.update(FacilitatorType: String)
 DELETE        /deleteFacilitatorType/:id                       controllers.FacilitatorTypeController.delete(id: Long)
 GET           /readFacilitatorType/:id                         controllers.FacilitatorTypeController.read(id: Long)
-GET           /getAllFacilitatorTypes/                         controllers.FacilitatorTypeController.getAll()
+GET           /getAllFacilitatorTypes                          controllers.FacilitatorTypeController.getAll()
 GET           /getFacilitatorTypeByFacId/:FacTypeid            controllers.FacilitatorTypeController.getById(FacTypeid : Long)
 GET           /getFacilTypeByID/:facID                         controllers.FacilitatorTypeController.getByFacilId(facID : Long)
 GET           /getFacilitatorTypeByName/:name                  controllers.FacilitatorTypeController.getByName(name : String)
@@ -49,7 +49,7 @@ POST          /createMembers/:Members                          controllers.Membe
 PUT           /updateMembers/:Members                          controllers.MembersController.update(Members: String)
 DELETE        /deleteMembers/:id                               controllers.MembersController.delete(id: Long)
 GET           /readMembers/:id                                 controllers.MembersController.read(id: Long)
-GET           /getAllMembers/                                  controllers.MembersController.getAllMembers()
+GET           /getAllMembers                                   controllers.MembersController.getAllMembers()
 GET           /GetMemberByID/:memID                            controllers.MembersController.getMemberByID(memID: Long)
 
 
@@ -80,7 +80,7 @@ POST          /createRole/:Role                                controllers.RoleC
 PUT           /updateRole/:Role                                controllers.RoleController.update(Role: String)
 DELETE        /deleteRole/:id                                  controllers.RoleController.delete(id: Long)
 GET           /readRole/:id                                    controllers.RoleController.read(id: Long)
-GET           /getAllRole/                                     controllers.RoleController.getAll()
+GET           /getAllRole                                     controllers.RoleController.getAll()
 GET           /getRoleById/:id                                 controllers.RoleController.getById(id : Long)
 GET           /getRoleByName/:name                             controllers.RoleController.getByName(name : String)
 
@@ -90,7 +90,7 @@ POST          /createSpeciality/:Speciality                    controllers.Speci
 PUT           /updateSpeciality/:Speciality                    controllers.SpecialityController.update(Speciality: String)
 DELETE        /deleteSpeciality/:id                            controllers.SpecialityController.delete(id: Long)
 GET           /readSpeciality/:id                              controllers.SpecialityController.read(id: Long)
-GET           /getAllSpeciality/                               controllers.SpecialityController.getAll()
+GET           /getAllSpeciality                               controllers.SpecialityController.getAll()
 GET           /getBySpecID/:specID                             controllers.SpecialityController.getBySpecID(specID : Long)
 GET           /getByName/:name                                 controllers.SpecialityController.getByName(name : String)
 GET           /getByFacilitatorID/:facID                       controllers.SpecialityController.getByFacilitatorID(facID : Long)
@@ -111,7 +111,7 @@ PUT           /updateMembersEncounter/:MembersEncounter        controllers.Membe
 DELETE        /deleteMembersEncounter/:id                      controllers.MembersEncounterController.delete(id: Long)
 GET           /readMembersEncounter/:id                        controllers.MembersEncounterController.read(id: Long)
 GET           /getMembersEncounterByID/:id                     controllers.MembersEncounterController.getById(id : Long)
-
+#all above is working
 
 # Map static resources from the /public folder to the /assets URL path
 GET           /assets/*file                                    controllers.Assets.at(path="/public", file)

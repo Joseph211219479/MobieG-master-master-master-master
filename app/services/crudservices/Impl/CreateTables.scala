@@ -2,6 +2,7 @@ package services.crudservices.Impl
 
 import repository.AdminRepository.AdminRepository
 import repository.ChannelRepository.ChannelRepository
+import repository.ConversationMessageRepository.ConversationMessageRepository
 import repository.ConversationRepository.ConversationRepository
 import repository.FacilitatorRepository.FacilitatorRepository
 import repository.FacilitatorTypeRepository.FacilitatorTypeRepository
@@ -28,6 +29,7 @@ class CreateTables extends CreateTablesInt
       val admin = TableQuery[AdminRepository]
       val channel = TableQuery[ChannelRepository]
       val convorepo = TableQuery[ConversationRepository]
+      val convomessagerepo = TableQuery[ConversationMessageRepository]
       val peeps = TableQuery[PersonRepository]
       val ratrepo = TableQuery[RatingRepository]
       val role = TableQuery[RoleRepository]
@@ -39,7 +41,7 @@ class CreateTables extends CreateTablesInt
       val facilitator = TableQuery[FacilitatorRepository]
 
       //Create table Facilitator
-      facirepo.ddl.create
+      //facirepo.ddl.create
 
       //Create table Admin
       //admin.ddl.create
@@ -49,6 +51,9 @@ class CreateTables extends CreateTablesInt
 
       //Create table Conversation
       //facilitator.ddl.create
+
+      //Create table ConversationMessage
+      convomessagerepo.ddl.create
 
       //Create table Person
       //peeps.ddl.create

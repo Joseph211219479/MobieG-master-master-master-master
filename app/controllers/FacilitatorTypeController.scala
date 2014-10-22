@@ -51,12 +51,12 @@ object FacilitatorTypeController extends Controller{
     request =>
       val input = request.body
       val income = (input \ "object").as[String]
-      val incomeF = (input \ "facobject").as[String]
+      //val incomeF = (input \ "facobject").as[String]
       val json = Json.parse(income)
       //val jsonF = Json.parse(incomeF)
 
       val chanModel = Json.fromJson[FacilitatorTypeModel](json).get
-      val chanzoModel = Json.fromJson[FacilitatorModel](input).get
+      //val chanzoModel = Json.fromJson[FacilitatorModel](input).get
       val admin = chanModel.getDomain()
       //val chanzo = chanzoModel.getDomain()
       val typObj = FacilitatorTypeModel(admin.id,admin.name,admin.description,admin.facilitatorId).getDomain()

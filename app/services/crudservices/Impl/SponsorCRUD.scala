@@ -62,9 +62,9 @@ import scala.slick.lifted.TableQuery
     Database.forURL("jdbc:mysql://localhost:3306/mysql", driver = "com.mysql.jdbc.Driver", user = "root", password = "admin").withSession { implicit session =>
 
       spons.filter(_.id === id).delete
-      channel.filter(_.id === id).delete
-      fac.filter(_.id === id).delete
-      specs.filter(_.id === id).delete
+      //channel.filter(_.id === id).delete
+      //fac.filter(_.id === id).delete
+      //specs.filter(_.id === id).delete
 
     }
   }

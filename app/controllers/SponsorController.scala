@@ -31,22 +31,23 @@ object SponsorController extends Controller{
   {
     request =>
       val input = request.body
+
       val income = (input \ "object").as[String]
-      val incomeC = (input \ "facobject").as[String]
-      val incomeF = (input \ "Fobject").as[String]
-      val incomeD = (input \ "Sobject").as[String]
+      val incomeF = (input \ "facobject").as[String]
+      val incomeC = (input \ "Cobject").as[String]
+      val incomeS = (input \ "Sobject").as[String]
       val json = Json.parse(income)
+      val jsonF = Json.parse(incomeF)
       val jsonC = Json.parse(incomeC)
-      val jsonD = Json.parse(incomeF)
-      val jsonE = Json.parse(incomeD)
+      val jsonS = Json.parse(incomeS)
 
       val chanModel = Json.fromJson[SponsorModel](json).get
       val admin = chanModel.getDomain()
-      val chanzoModel = Json.fromJson[FacilitatorModel](jsonC).get
+      val chanzoModel = Json.fromJson[FacilitatorModel](jsonF).get
       val chanzo = chanzoModel.getDomain()
-      val chanModela = Json.fromJson[SpecialityModel](jsonD).get
+      val chanModela = Json.fromJson[SpecialityModel](jsonS).get
       val admina = chanModela.getDomain()
-      val chanzoModelb = Json.fromJson[ChannelModel](jsonE).get
+      val chanzoModelb = Json.fromJson[ChannelModel](jsonC).get
       val chanzos = chanzoModelb.getDomain()
 
       val SpoObject = SponsorModel(admin.id,admin.name,admin.url,admin.message,admin.imageId,admin.channelId).getDomain()
@@ -68,8 +69,8 @@ object SponsorController extends Controller{
       val income = (input \ "object").as[String]
       val json = Json.parse(income)
 
-      val chanModel = Json.fromJson[SponsorModel](input).get
-      val chanzoModel = Json.fromJson[FacilitatorModel](input).get
+      val chanModel = Json.fromJson[SponsorModel](json).get
+      //val chanzoModel = Json.fromJson[FacilitatorModel](input).get
       val admin = chanModel.getDomain()
       //val chanzo = chanzoModel.getDomain()
       val SpoObject = SponsorModel(admin.id,admin.name,admin.url,admin.message,admin.imageId,admin.channelId).getDomain()

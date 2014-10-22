@@ -25,9 +25,9 @@ object MembersEncounterController extends Controller{
     request =>
       val input = request.body
 
-      val income = (input \ "object").as[String]
-      val json = Json.parse(income)
-      val adminModel = Json.fromJson[MemberEncounterModel](json).get
+      //val income = (input \ "object").as[String]
+      //val json = Json.parse(income)
+      val adminModel = Json.fromJson[MemberEncounterModel](input).get
       val admin = adminModel.getDomain()
       val adminObj = MemberEncounterModel(admin.id,admin.startTime,admin.endTime,admin.memberId,admin.facilitatorId).getDomain()
       val adm: MembersEncounterCRUDint = new MembersEncounterCRUD
@@ -40,12 +40,12 @@ object MembersEncounterController extends Controller{
   {
     request =>
       val input = request.body
-      val income = (input \ "object").as[String]
-      val json = Json.parse(income)
-      val chanModel = Json.fromJson[MemberEncounterModel](json).get
-      val chanzoModel = Json.fromJson[FacilitatorModel](input).get
+      //val income = (input \ "object").as[String]
+      //val json = Json.parse(income)
+      val chanModel = Json.fromJson[MemberEncounterModel](input).get
+      //val chanzoModel = Json.fromJson[FacilitatorModel](input).get
       val admin = chanModel.getDomain
-      val chanzo = chanzoModel.getDomain()
+      //val chanzo = chanzoModel.getDomain()
       val adminObj = MemberEncounterModel(admin.id,admin.startTime,admin.endTime,admin.memberId,admin.facilitatorId).getDomain()
       val obj: MembersEncounterCRUDint = new MembersEncounterCRUD
       val res = obj.update(adminObj.id, adminObj.startTime)

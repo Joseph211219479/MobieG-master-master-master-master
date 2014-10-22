@@ -52,12 +52,15 @@ object MembersController extends Controller{
   {
     request =>
       val input = request.body
-      val chanModel = Json.fromJson[MembersModel](input).get
-      val chanzoModel = Json.fromJson[FacilitatorModel](input).get
+      val income = (input \ "object").as[String]
+      val json = Json.parse(income)
+      val chanModel = Json.fromJson[MembersModel](json).get
+      //val chanzoModel = Json.fromJson[FacilitatorModel](input).get
       val admin = chanModel.getDomain
       //val chanzo = chanzoModel.getDomain()
+      val memObj = MembersModel(admin.id, admin.facilitatorId).getDomain
       val obj: MembersCRUDInterface = new MembersCRUD
-      val res = obj.update(admin.facilitatorId, admin.id)
+      val res = obj.update(memObj.facilitatorId, memObj.id)
       val results: Future[String] = Future{res.toString}
       results.map(result => Ok(Json.toJson(result)))
   }
